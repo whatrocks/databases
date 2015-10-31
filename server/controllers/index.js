@@ -12,6 +12,10 @@ module.exports = {
     post: function (req, res) {
       // this should call model.post
 
+      models.messages.post(req, function () {
+        res.send();
+      });
+
     } // a function which handles posting a message to the database
 
 
