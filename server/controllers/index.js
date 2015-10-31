@@ -4,22 +4,10 @@ module.exports = {
   classes: {
 
     get: function (req, res) {
-
-      // var text = {results : [{objectId : 1 , username : 'way', text : 'works?', createdAt : new Date()},
-      //   {objectId : 2 , username : 'Darth Vader', text : 'evil?', createdAt : new Date()}]};
-      // iterate through all messages
-
-      // var storage = {results: []};
-
-      models.messages.get(function (results) {
-        
+      models.messages.get(function (results) {        
         res.send({results : results});
-        console.log('---------------what is results', results);
-
       });
 
-
- 
     }, // a function which handles a get request for all messages
     post: function (req, res) {
       // this should call model.post
