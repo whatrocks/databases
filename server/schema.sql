@@ -1,3 +1,4 @@
+-- DROP DATABASE chat;
 CREATE DATABASE chat;
 
 USE chat;
@@ -26,10 +27,15 @@ CREATE TABLE messages (
 );
 
 
-
-
-
 /*  Execute this file from the command line by typing:
  *    mysql -u root < server/schema.sql
  *  to create the database and the tables.*/
 
+insert into users (name, id) values ('Way', 1);
+insert into users (name) values ('Charlie');
+insert into rooms (name, id) values ('Hell', 1);
+insert into messages (text, created_at, id_users, id_rooms) 
+  values('does this work?', '2015-10-30 04:05:05', 1, 1);
+
+insert into messages (text, created_at, id_users, id_rooms)
+  values('I also hope this works', '2015-10-30 04:05:06', 2, 1);
