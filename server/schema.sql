@@ -5,7 +5,7 @@ USE chat;
 /* Create other tables and define schemas for them here! */
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(30),
+  name VARCHAR(30) UNIQUE,
   PRIMARY KEY (id)
 );
 
@@ -20,7 +20,7 @@ CREATE TABLE messages (
   id_users INT NOT NULL,
   text VARCHAR(255),
   -- id_rooms INT NOT NULL,
-  created_at DATETIME,
+  created_at VARCHAR(255),
   PRIMARY KEY (id),
   FOREIGN KEY (id_users) REFERENCES users(id)
   -- FOREIGN KEY (id_rooms) REFERENCES rooms(id)
