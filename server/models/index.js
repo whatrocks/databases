@@ -11,7 +11,19 @@ module.exports = {
         if (err) {
           console.log("Error with query");
         }
-        callback(rows);
+
+        var results = [];
+
+        for (var i = 0; i < rows.length; i++) { 
+          var msg = {};
+          msg.objectId = rows[i].id;
+          msg.username = rows[i].id_users;
+          msg.text = rows[i].text;
+          msg.createdAt = rows[i].created_at;
+          results.push(msg);
+        }
+
+        callback(results);
       });
 
     }, // a function which produces all the messages

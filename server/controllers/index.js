@@ -9,22 +9,16 @@ module.exports = {
       //   {objectId : 2 , username : 'Darth Vader', text : 'evil?', createdAt : new Date()}]};
       // iterate through all messages
 
-      models.messages.get(function(rows) {
+      // var storage = {results: []};
 
-        for (var i = 0; i < rows.length; i++) {
-
-          console.log("///////////////////////////");
-          console.log("row ", i, " is " + rows[i].text);
-        }
+      models.messages.get(function (results) {
+        
+        res.send({results : results});
+        console.log('---------------what is results', results);
 
       });
 
 
-      var storage = {results: []};
-
-      // GET THE DATA FROM THE MODEL
-
-      res.send("HELLO");
  
     }, // a function which handles a get request for all messages
     post: function (req, res) {
