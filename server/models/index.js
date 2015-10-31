@@ -1,20 +1,17 @@
 var db = require('../db');
-var Promise = require('bluebird');
+// var Promise = require('bluebird');
 db.connection.connect();
 
-// var db.query = Promise.promisify(db.connection.query);
-
-
-var toQuery = function (string) {
-  return new Promise(function (resolve, reject) {
-    db.connection.query(string, function (err, rows, fields) {
-      if (err){
-        reject(err);
-      }
-      resolve(rows);
-    })
-  })
-}
+// var toQuery = function (string) {
+//   return new Promise(function (resolve, reject) {
+//     db.connection.query(string, function (err, rows, fields) {
+//       if (err){
+//         reject(err);
+//       }
+//       resolve(rows);
+//     });
+//   });
+// };
 
 module.exports = {
 
