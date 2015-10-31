@@ -2,6 +2,7 @@ var controllers = require('./controllers');
 var router = require('express').Router();
 
 for (var route in controllers) {
+  //   /messages 
   router.route("/" + route)
     .get(controllers[route].get)
     .post(controllers[route].post);
@@ -9,3 +10,4 @@ for (var route in controllers) {
 
 module.exports = router;
 
+//router['messages'].get(get from controller)
