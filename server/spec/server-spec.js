@@ -11,7 +11,7 @@ describe("Persistent Node Chat Server", function() {
   beforeEach(function(done) {
     dbConnection = mysql.createConnection({
       user: "root",
-      password: "",
+      password: "h3r0",
       database: "chat"
     });
     dbConnection.connect();
@@ -65,10 +65,13 @@ describe("Persistent Node Chat Server", function() {
 
   it("Should output all messages from the DB", function(done) {
     // Let's insert a message into the db
-       var tablename = ""; // TODO: fill this out
+       var tablename = "messages"; // TODO: fill this out
     // TODO - The exact query string and query args to use
     // here depend on the schema you design, so I'll leave
     // them up to you. */
+
+    var queryString = "SELECT * FROM messages";
+    var queryArgs = [];
 
     dbConnection.query(queryString, queryArgs, function(err) {
       if (err) { throw err; }

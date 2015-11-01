@@ -1,56 +1,50 @@
 var models = require('../models');
 
 module.exports = {
-  classes: {
 
-    get: function (req, res) {
-      models.messages.get(function (results) {        
-        res.send({results : results});
-      });
+  // Current working solution
+  // classes: {
+  //   get: function (req, res) {
+  //     models.messages.get(function (results) {        
+  //       res.send({results : results});
+  //     });
+  //   }, 
+  //   post: function (req, res) {
+  //     models.messages.post(req, function () {
+  //       res.send();
+  //     });
+  //   } 
+  // },
 
-    }, // a function which handles a get request for all messages
-    post: function (req, res) {
-      // this should call model.post
-
-      models.messages.post(req, function () {
-        res.send();
-      });
-
-    } // a function which handles posting a message to the database
-
-
-
-  },
-
-  ///////////////////////////////////////////////////////
-  // TBD IN CASE WANT TO RETRIEVE THESE SEPARATELY?
-  ///////////////////////////////////////////////////////
+  // Refactored solution
   messages: {
     get: function (req, res) {
-      // var text = {results : [{objectId : 1 , username : 'way', text : 'works?', createdAt : new Date()},
-      //   {objectId : 2 , username : 'Darth Vader', text : 'evil?', createdAt : new Date()}]};
-      // // iterate through all messages
-
-      // res.send(text);
- 
-    }, // a function which handles a get request for all messages
-    post: function (req, res) {
-      // this should call model.post
-
-    } // a function which handles posting a message to the database
+      models.messages.get(function(err, results){
+        console.log(results);
+        res.json(results);
+      });
+    }, 
+    post: function (req, res){
+      var params = [ req.body.message, req.body.username ];
+      models.messages.post(params, function(err, results){
+        if (err) { /* do something */ }
+        res.sendStatus(201);
+      });
+    } 
   },
 
   users: {
-    // Ditto as above
     get: function (req, res) {
-
-      console.log("I'm empty");
-
+      models.users.get(function(err, results) {
+        console.log(results);
+        res.json(results);
+      });
     },
     post: function (req, res) {
-
-
-
+      var params = [ req.body.username ];
+      models.users.post(params, function(err, results){
+        res.sendStatus(201);
+      });
     }
   }
 };

@@ -26,27 +26,9 @@ app.use("/", router);
 // Serve the client files
 app.use(express.static(__dirname + "/../chatter/client"));
 
-// TESTING HERE
-// router.get('/', function(req, res){
-  
-//   console.log("hello");
-//   router.get(controllers["messages"].get(req, res));
-
-// });
 
 // If we are being run directly, run the server.
 if (!module.parent) {
   app.listen(app.get("port"));
   console.log("Listening on", app.get("port"));
 }
-
-
-// db.connection.connect();
-
-// db.connection.query('SELECT * FROM MESSAGES', function(err, rows, fields) {
-//   if (err) {
-//     console.log("Error with query");
-//   }
-//   console.log(rows);
-// });
-
