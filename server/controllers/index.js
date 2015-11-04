@@ -20,12 +20,12 @@ module.exports = {
   messages: {
     get: function (req, res) {
       models.messages.get(function(err, results){
-        console.log(results);
         res.json(results);
       });
     }, 
     post: function (req, res){
-      var params = [ req.body.message, req.body.username ];
+      var now = new Date();
+      var params = [ req.body.text, req.body.username, now ];
       models.messages.post(params, function(err, results){
         if (err) { /* do something */ }
         res.sendStatus(201);
@@ -36,7 +36,6 @@ module.exports = {
   users: {
     get: function (req, res) {
       models.users.get(function(err, results) {
-        console.log(results);
         res.json(results);
       });
     },

@@ -16,8 +16,6 @@ CREATE TABLE messages (
   FOREIGN KEY (id_users) REFERENCES users(id)
 );
 
-
-
 insert into users (name, id) values ('Way', 1);
 insert into users (name) values ('Charlie');
 

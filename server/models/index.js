@@ -8,15 +8,14 @@ module.exports = {
       var queryStr = "select messages.id, messages.text, messages.created_at, users.name \
                       from messages left join users on \
                       messages.id_users = users.id";
-
       db.query(queryStr, function(err, results){
         callback(err, results);
       });
 
     },
     post: function (params, callback) {
-      var queryStr = "insert into messages(text, userid) \
-                      value (?, (select id from users where username = ? limit 1))";
+      var queryStr = "insert into messages(text, id_users, created_at) \
+                      values (?, (select id from users where name = ? limit 1), ?)";
       db.query(queryStr, params, function(err, results){
         callback(err, results);
       });
