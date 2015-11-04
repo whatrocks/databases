@@ -25,6 +25,7 @@ module.exports = {
     }, 
     post: function (req, res){
       var now = new Date();
+      console.log(req.body);
       var params = [ req.body.text, req.body.username, now ];
       models.messages.post(params, function(err, results){
         if (err) { /* do something */ }
